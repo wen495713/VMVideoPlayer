@@ -21,8 +21,8 @@
 		05499DA818DAC0C900D2B734 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05499D8A18DAC0C900D2B734 /* UIKit.framework */; };
 		05499DB018DAC0CA00D2B734 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05499DAE18DAC0CA00D2B734 /* InfoPlist.strings */; };
 		05499DB218DAC0CA00D2B734 /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05499DB118DAC0CA00D2B734 /* ExampleTests.m */; };
-		05499DBE18DAC15500D2B734 /* VMVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05499DBD18DAC15500D2B734 /* VMVideoPlayer.m */; };
-		05499DC118DAC17A00D2B734 /* YDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 05499DC018DAC17A00D2B734 /* YDSlider.m */; };
+		059F5B4518DBE52B008676CF /* VMVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 059F5B4418DBE52B008676CF /* VMVideoPlayer.m */; };
+		059F5B4818DBE548008676CF /* YDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 059F5B4718DBE548008676CF /* YDSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +55,10 @@
 		05499DAD18DAC0C900D2B734 /* ExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExampleTests-Info.plist"; sourceTree = "<group>"; };
 		05499DAF18DAC0CA00D2B734 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		05499DB118DAC0CA00D2B734 /* ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTests.m; sourceTree = "<group>"; };
-		05499DBC18DAC15500D2B734 /* VMVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VMVideoPlayer.h; path = ../../src/VMVideoPlayer.h; sourceTree = "<group>"; };
-		05499DBD18DAC15500D2B734 /* VMVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VMVideoPlayer.m; path = ../../src/VMVideoPlayer.m; sourceTree = "<group>"; };
-		05499DBF18DAC17A00D2B734 /* YDSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YDSlider.h; path = ../../src/YDSlider/YDSlider/YDSlider.h; sourceTree = "<group>"; };
-		05499DC018DAC17A00D2B734 /* YDSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YDSlider.m; path = ../../src/YDSlider/YDSlider/YDSlider.m; sourceTree = "<group>"; };
+		059F5B4318DBE52B008676CF /* VMVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VMVideoPlayer.h; path = ../src/VMVideoPlayer.h; sourceTree = "<group>"; };
+		059F5B4418DBE52B008676CF /* VMVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VMVideoPlayer.m; path = ../src/VMVideoPlayer.m; sourceTree = "<group>"; };
+		059F5B4618DBE548008676CF /* YDSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YDSlider.h; path = ../src/YDSlider/YDSlider/YDSlider.h; sourceTree = "<group>"; };
+		059F5B4718DBE548008676CF /* YDSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YDSlider.m; path = ../src/YDSlider/YDSlider/YDSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,10 +162,10 @@
 		05499DBB18DAC14200D2B734 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				05499DBC18DAC15500D2B734 /* VMVideoPlayer.h */,
-				05499DBD18DAC15500D2B734 /* VMVideoPlayer.m */,
-				05499DBF18DAC17A00D2B734 /* YDSlider.h */,
-				05499DC018DAC17A00D2B734 /* YDSlider.m */,
+				059F5B4618DBE548008676CF /* YDSlider.h */,
+				059F5B4718DBE548008676CF /* YDSlider.m */,
+				059F5B4318DBE52B008676CF /* VMVideoPlayer.h */,
+				059F5B4418DBE52B008676CF /* VMVideoPlayer.m */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -268,8 +268,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				05499D9D18DAC0C900D2B734 /* ViewController.m in Sources */,
-				05499DBE18DAC15500D2B734 /* VMVideoPlayer.m in Sources */,
-				05499DC118DAC17A00D2B734 /* YDSlider.m in Sources */,
+				059F5B4518DBE52B008676CF /* VMVideoPlayer.m in Sources */,
+				059F5B4818DBE548008676CF /* YDSlider.m in Sources */,
 				05499D9718DAC0C900D2B734 /* AppDelegate.m in Sources */,
 				05499D9318DAC0C900D2B734 /* main.m in Sources */,
 			);
