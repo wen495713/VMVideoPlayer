@@ -23,6 +23,7 @@
 		05499DB218DAC0CA00D2B734 /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05499DB118DAC0CA00D2B734 /* ExampleTests.m */; };
 		059F5B4518DBE52B008676CF /* VMVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 059F5B4418DBE52B008676CF /* VMVideoPlayer.m */; };
 		059F5B4818DBE548008676CF /* YDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 059F5B4718DBE548008676CF /* YDSlider.m */; };
+		059F5B4C18DC0B9B008676CF /* VideoPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059F5B4B18DC0B9B008676CF /* VideoPlayer.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		059F5B4418DBE52B008676CF /* VMVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VMVideoPlayer.m; path = ../src/VMVideoPlayer.m; sourceTree = "<group>"; };
 		059F5B4618DBE548008676CF /* YDSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YDSlider.h; path = ../src/YDSlider/YDSlider/YDSlider.h; sourceTree = "<group>"; };
 		059F5B4718DBE548008676CF /* YDSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YDSlider.m; path = ../src/YDSlider/YDSlider/YDSlider.m; sourceTree = "<group>"; };
+		059F5B4B18DC0B9B008676CF /* VideoPlayer.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = VideoPlayer.xcassets; path = ../src/VideoPlayer.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		05499DBB18DAC14200D2B734 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				059F5B4B18DC0B9B008676CF /* VideoPlayer.xcassets */,
 				059F5B4618DBE548008676CF /* YDSlider.h */,
 				059F5B4718DBE548008676CF /* YDSlider.m */,
 				059F5B4318DBE52B008676CF /* VMVideoPlayer.h */,
@@ -246,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				059F5B4C18DC0B9B008676CF /* VideoPlayer.xcassets in Resources */,
 				05499D9F18DAC0C900D2B734 /* Images.xcassets in Resources */,
 				05499D9118DAC0C900D2B734 /* InfoPlist.strings in Resources */,
 				05499D9A18DAC0C900D2B734 /* Main.storyboard in Resources */,
