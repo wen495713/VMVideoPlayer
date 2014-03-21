@@ -1,0 +1,3 @@
+[submodule "src/YDSlider"]
+	path = src/YDSlider
+	url = git@github.com:wen495713/YDSlider.git
