@@ -8,6 +8,7 @@
 
 #import "VMVideoPlayer.h"
 #import "YDSlider.h"
+#import "VMPlayerView.h"
 
 #define CurrentOrientation [UIApplication sharedApplication].statusBarOrientation
 
@@ -20,7 +21,12 @@
 
 #define TimeLabelWeight 57.0f
 #define TimeLabelHeight 21.0f
+
+static void *PlayStatusObserverContext = &PlayStatusObserverContext;
+
 @interface VMVideoPlayer()
+
+@property (nonatomic, strong) VMPlayerView *playerview;
 
 @property (nonatomic, assign) BOOL isUIHide;
 
@@ -62,13 +68,64 @@
     return self;
 }
 
+#pragma mark -- Player Logic Part
+
+- (void)load{
+    if (self.resourcePath.length < 1) {
+#if DEBUG
+        NSLog(@"video path is nil!");
+#endif
+        return;
+    }
+    
+    [self.playerview addObserver:self
+                      forKeyPath:@"status"
+                         options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
+                         context:PlayStatusObserverContext];
+    
+    self.playerview.resourcePath = self.resourcePath;
+    [self.playerview ready];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context{
+    if (context == PlayStatusObserverContext) {
+        switch (self.playerview.status) {
+            case VMPlayerReady:
+                [self.spinner stopAnimating];
+                [self.playerview play];
+                [self setPlayBtnStatus:NO];
+                
+                break;
+            case VMPlayerFailture:
+#if DEBUG
+                NSLog(@"player fail to play");
+#endif
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+- (void)setPlayBtnStatus:(BOOL)isPlay{
+    if (isPlay) {
+        [self.playBtn setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    }else{
+        [self.playBtn setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+    }
+}
+
+#pragma mark -- UI Part
+
 - (void)setUpUI{
+    [self addSubview:self.playerview];
     [self addSubview:self.spinner];
     [self addSubview:self.headerControlBoard];
     [self addSubview:self.footerControlBoard];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self addGestureRecognizer:tap];
     self.isUIHide = YES;
 }
 
@@ -101,6 +158,17 @@
     
 }
 
+- (VMPlayerView *)playerview{
+    if (!_playerview) {
+        _playerview = [[VMPlayerView alloc] initWithFrame:self.bounds];
+        _playerview.backgroundColor = [UIColor blackColor];
+        _playerview.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [_playerview addGestureRecognizer:tap];
+    }
+    return _playerview;
+}
+
 - (UIActivityIndicatorView *)spinner{
     if (!_spinner) {
         _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -108,7 +176,7 @@
         [_spinner stopAnimating];
 #if DEBUG
         [_spinner setColor:[UIColor yellowColor]];
-        [_spinner startAnimating];
+//        [_spinner startAnimating];
 #endif
     }
     return _spinner;
@@ -164,6 +232,7 @@
         [_lockBtn setFrame:CGRectMake(512, 41, 21, 21)];
         [_lockBtn setImage:[UIImage imageNamed:@"lock_off"] forState:UIControlStateNormal];
         [_lockBtn setImage:[UIImage imageNamed:@"lock_on"] forState:UIControlStateSelected];
+        [_lockBtn addTarget:self action:@selector(lockBtnTap:) forControlEvents:UIControlEventTouchUpInside];
         
 #if DEBUG
         [_lockBtn setSelected:YES];
@@ -208,6 +277,7 @@
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_playBtn setFrame:CGRectMake(0, 0, UIHeight, UIHeight)];
         [_playBtn setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        [_playBtn addTarget:self action:@selector(playBtnTap:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _playBtn;
 }
@@ -217,6 +287,7 @@
         _fullScreenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_fullScreenBtn setFrame:CGRectMake(0, 0, UIHeight, UIHeight)];
         [_fullScreenBtn setImage:[UIImage imageNamed:@"zoomout"] forState:UIControlStateNormal];
+        [_fullScreenBtn addTarget:self action:@selector(zoomBtnTap:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _fullScreenBtn;
 }
@@ -310,6 +381,35 @@
     [self.fullScreenBtn setCenter:CGPointMake(CGRectGetWidth(footRect) - CGRectGetWidth(self.playBtn.frame)/2, CGRectGetHeight(footRect)/2)];
     
     
+}
+
+- (void)playBtnTap:(id)sender{
+    
+    if (self.playerview.status == VMPlayerBuffring ||self.playerview.status == VMPlayerPlaying) {
+        [self.playerview pause];
+        [self setPlayBtnStatus:YES];
+    }else if (self.playerview.status == VMPlayerReady | self.playerview.status == VMPlayerPause){
+        [self.playerview play];
+        [self setPlayBtnStatus:NO];
+    }else{
+        [self load];
+        [self.spinner startAnimating];
+    }
+#if DEBUG
+    NSLog(@"play button tap!");
+#endif
+}
+
+- (void)zoomBtnTap:(id)sender{
+#if DEBUG
+    NSLog(@"zoom button tap!");
+#endif
+}
+
+- (void)lockBtnTap:(id)sender{
+#if DEBUG
+    NSLog(@"lock button tap!");
+#endif
 }
 
 @end

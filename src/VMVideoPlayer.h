@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
+
 @interface VMVideoPlayer : UIView
 @property (nonatomic, copy) NSString *resourcePath;
+- (void)load;
 @end

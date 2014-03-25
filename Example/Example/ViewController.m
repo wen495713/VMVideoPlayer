@@ -22,6 +22,10 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    self.videoplayer.resourcePath = @"http://encode1.hk1.tvb.com/hls/bigman-iv-e/bigman.m3u8";
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
